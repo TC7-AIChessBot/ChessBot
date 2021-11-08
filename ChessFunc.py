@@ -26,6 +26,7 @@ def play():
         try:
             move = request.form['move']
             board.push_san(move)
+            print(board.is_checkmate())
             return render_template('chess.html', err=False, url=getUrl())
         except:
             return render_template('chess.html', err=True, url=getUrl())
