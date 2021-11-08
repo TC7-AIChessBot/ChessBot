@@ -14,7 +14,7 @@ AI project - HUST
 
 ### Libraries Used
 
-+ [Chess](https://python-chess.readthedocs.io/en/latest/#)
++ [Chess](https://python-chess.readthedocs.io/en/latest/#):
 > ```pip install chess```
 + [Flask](https://pypi.org/project/Flask/): 
 > ```pip install Flask```
