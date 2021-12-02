@@ -37,7 +37,7 @@ class MyChessBoard:
 
         fitness = 0
         # diem cong dua tren vi tri quan co chi huu dung khi khai cuoc
-        if self.board.fullmove_number<15:
+        if self.board.fullmove_number<12:
             for i in range(64):
                 fitness += (point[fen[i]]['value'] + point[fen[i]]['pos'][i])
         else: 
@@ -49,18 +49,3 @@ class MyChessBoard:
 
     def newgame(self):
         self.board = chess.Board()
-
-    def lastMove(self):
-        try:
-            lastMove = 'lastMove=' + self.board.peek().__str__()
-            return lastMove
-        except:
-            return ''
-
-    def check_square(self):
-        if self.board.is_check():
-            return 'check=' + chess.square_name(self.board.king(self.board.turn))
-        return ''
-
-    def get_img_url(self):
-        return 'https://backscattering.de/web-boardimage/board.svg?fen={}&{}&{}'.format(self.board.board_fen(), self.lastMove(), self.check_square())
