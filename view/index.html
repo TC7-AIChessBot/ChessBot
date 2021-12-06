@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Chess Bot</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+      integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <div class="header">WELCOME TO AI CHESSBOARD</div>
+
+    <p class="choose">Please choose your mode</p>
+    <div class="choice">
+      <button class="pvp">Person versus Person</button>
+      <button class="pvm">Person versus Machine</button>
+    </div>
+
+    <div class="boardContainer">
+      <div id="myBoardPvp" style="width: 400px"></div>
+      <div id="myBoardPvm" style="width: 400px"></div>
+      <div class="current-status">
+        <label>Status:</label>
+        <div id="status"></div>
+        <!-- <label>FEN:</label>
+        <div id="fen"></div> -->
+        <label>PGN:</label>
+        <div id="pgn"></div>
+      </div>
+    </div>
+
+    <!--- JS -------------------------------------------------------->
+
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/chessboard-1.0.0.min.js"></script>
+    <script src="/static/js/chess.js"></script>
+    <script src="/static/js/gamePM.js"></script>
+    <script src="/static/js/gamePP.js"></script>
+    <script src="/static/js/config.js"></script>
+  </body>
+</html>

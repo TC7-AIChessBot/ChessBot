@@ -1,41 +1,27 @@
-import chess
-import chess.svg
-from env import board as board
+from flask import (Flask, render_template, request)
+import sys
+sys.path.insert(0, './algorithms/alpha_beta')
+from Game import Game
 
-from flask import Flask, render_template, redirect, request
+app = Flask(__name__, template_folder='view', static_url_path='/static')
 
-app = Flask(__name__)
-board = board.ChessBoard()
+game = Game(True)
 
-def lastMove():
-    try:
-        lastMove = 'lastMove=' + board.env.peek().__str__()
-        return lastMove
-    except:
-        return ''
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-def check_square():
-    if board.is_check():
-        return 'check=' + chess.square_name(board.env.king(board.env.turn))
-    return ''
+@app.route('/newgame', methods = ["POST"])
+def newgame():
+    data = request.get_json()
+    game.new_game(data['color'] == 'white')
+    print(data)
+    return {'status': 'ok'}
 
-
-def getUrl():
-    return 'https://backscattering.de/web-boardimage/board.svg?fen={}&{}&{}'.format(board.env.fen().split()[0], lastMove(), check_square())
-
-@app.route('/', methods = ['POST', 'GET'])
-def play():
-    if request.method == 'POST':
-        try:
-            move = request.form['move']
-            board.action(move)
-            print(board.is_checkmate())
-            return render_template('chess.html', err=False, url=getUrl())
-        except:
-            return render_template('chess.html', err=True, url=getUrl())
-
-    else:
-        return render_template('chess.html', err=False, url=getUrl())
-
-
-app.run(debug=True)
+@app.route('/getmove', methods = ["POST"])
+def getmove():
+    data = request.get_json()
+    print(data['from'], data['to'])
+    move = game.get_move(data['from'], data['to'])
+    game.board.push(move)
+    return {"from": move.uci()[0:2], "to": move.uci()[2:4]}
