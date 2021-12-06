@@ -1,4 +1,4 @@
-from MyChessBoard import MyChessBoard
+from .MyChessBoard import MyChessBoard
 from Alpha_Beta import find_move
 import chess
 

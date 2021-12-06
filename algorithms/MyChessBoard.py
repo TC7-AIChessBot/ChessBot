@@ -1,5 +1,11 @@
 import chess
+import sys
+
+# sys.path.insert(0, './alpha_beta')
 from Config import point
+# from .alpha_beta.Config import point
+
+# print(sys.path)
 
 class MyChessBoard:
 
