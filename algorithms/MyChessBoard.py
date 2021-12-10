@@ -1,7 +1,7 @@
 import chess
 import sys
 
-# sys.path.insert(0, './alpha_beta')
+sys.path.insert(0, './alpha_beta')
 from Config import point
 # from .alpha_beta.Config import point
 
@@ -51,7 +51,24 @@ class MyChessBoard:
                 fitness += point[fen[i]]['value']
 
         return fitness
-
-
     def newgame(self):
         self.board = chess.Board()
+
+    def is_draw(self):
+        if self.board.is_stalemate():
+            print("statlemate")
+            return True
+        if self.board.is_fivefold_repetition():
+            print("fivefold repetition")
+            return True
+        if self.board.is_seventyfive_moves():
+            print("75 moves")
+            return True
+        if self.board.is_insufficient_material():
+            print("Insufficient Material")
+            return True
+        return False
+
+    def is_checkmate(self):
+        # If There is checkmate then it will be TRUE else FALSE.It will be a boolean value.
+        return self.board.is_checkmate()
