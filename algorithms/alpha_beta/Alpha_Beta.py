@@ -109,8 +109,3 @@ def minimax(depth,board,alpha,beta, is_maximising_player) :
             beta=min(beta,bestMove)
             if beta <=alpha:
                 return bestMove
-<<<<<<< HEAD
-        return bestMove
-=======
-        return bestMove
->>>>>>> 3cc4c369cc6be61c10ac7a555e72aaf0e14408b0
