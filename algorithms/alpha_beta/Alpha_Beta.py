@@ -32,79 +32,85 @@ def alpha_beta_pruning(board, depth, color, alpha, beta):
         return new_alpha
 
 
-def find_move(board, move):
-    if (move !='nomove'):
-        board.push(move)
-    chosen_move = None
-    moves = board.legal_moves()
-
-    if board.turn():
-        max_fit = -1000000
-        for move in moves:
-            board.push(move)
-            move_fit = alpha_beta_pruning(board, DEPTH-1, board.turn(), -99999, 99999)
-            if move_fit>max_fit:
-                max_fit = move_fit
-                chosen_move = move
-            board.pop()
-        return chosen_move
-
-    else:
-        min_fit = 1000000
-        for move in moves:
-            board.push(move)
-            move_fit = alpha_beta_pruning(board, DEPTH-1, board.turn(), -99999, 99999)
-            if move_fit<min_fit:
-                min_fit = move_fit
-                chosen_move = move
-            board.pop()
-        return chosen_move
-
-
-
-# ---------  USE THREAD ----------------------> chua hoan thanh
-# def mini_thread(board, moves, i, list):
-#     print('on-thread')
-#     board.push(moves[i])
-#     move_fit = minimax(board, DEPTH-1, board.turn(), -99999, 99999)
-#     list[i]=move_fit
-
-
-# def find_move(board):
-#     print('in-function')
+# def find_move(board, move):
+#     if (move !='nomove'):
+#         board.push(move)
 #     chosen_move = None
 #     moves = board.legal_moves()
-#     moves_length = moves.count()
-#     list = [0]*50
-#     thread_list = [0]*50
 
 #     if board.turn():
 #         max_fit = -1000000
-#         for i in range(moves_length):
-#             thread_list[i] = threading.Thread(target=mini_thread, args=(dcopy(board), moves, i, list))
-#             thread_list[i].start()
-#         for i in range(moves_length):
-#             thread_list[i].join()
-
-#         print('out-thread')        
-#         for i in range(moves_length):
-#             if max_fit<list[i]:
-#                 max_fit = list[i]
-#                 chosen_move = moves[i]
-        
+#         for move in moves:
+#             board.push(move)
+#             move_fit = alpha_beta_pruning(board, DEPTH-1, board.turn(), -99999, 99999)
+#             if move_fit>max_fit:
+#                 max_fit = move_fit
+#                 chosen_move = move
+#             board.pop()
 #         return chosen_move
 
 #     else:
 #         min_fit = 1000000
-#         for i in range(moves_length):
-#             thread_list[i] = threading.Thread(target=mini_thread, args=(dcopy(board), moves, i, list))
-#             thread_list[i].start()
-#         for i in range(moves_length):
-#             thread_list[i].join()
-#         print('out-thread') 
-#         for i in range(moves_length):
-#             if min_fit>list[i]:
-#                 min_fit = list[i]
-#                 chosen_move = moves[i]
-        
+#         for move in moves:
+#             board.push(move)
+#             move_fit = alpha_beta_pruning(board, DEPTH-1, board.turn(), -99999, 99999)
+#             if move_fit<min_fit:
+#                 min_fit = move_fit
+#                 chosen_move = move
+#             board.pop()
 #         return chosen_move
+import chess
+def find_move(board,move):
+    if (move !='nomove'):
+        board.push(move)
+    maximize = board.turn == chess.WHITE
+    best_move = -float("inf")
+    if not maximize: 
+        best_move = float("inf")
+
+    moves = board.legal_moves()
+    best_move_found = None
+    for move in moves:
+        if (move !='nomove'):    
+            board.push(move)   
+        #value = alpha_beta_pruning(board, DEPTH-1, board.turn(), -float("inf"), float("inf"))
+        value=minimax(DEPTH-1,board,-float("inf"),float("inf"),not maximize)
+        board.pop()
+        if maximize and value >= best_move:
+            best_move = value
+            best_move_found = move
+        elif not maximize and value <= best_move:
+            best_move = value
+            best_move_found = move
+
+    return best_move_found
+
+
+def minimax(depth,board,alpha,beta, is_maximising_player) :
+    if depth == 0:
+        return board.evaluate_board()
+    moves=board.legal_moves()
+    if is_maximising_player:
+        bestMove = -float("inf")
+        for move in moves:
+            board.push(move)
+            bestMove=max(bestMove,minimax(depth-1,board,alpha,beta, not is_maximising_player))
+            board.pop()
+            alpha=max(alpha,bestMove)
+            if beta <=alpha:
+                return bestMove
+        return bestMove
+    else:
+        bestMove = float("inf")
+        for move in moves:
+            board.push(move)
+            bestMove=min(bestMove,minimax(depth-1,board,alpha,beta, not is_maximising_player))
+            board.pop()
+            beta=min(beta,bestMove)
+            if beta <=alpha:
+                return bestMove
+<<<<<<< HEAD
+        return bestMove
+=======
+        return bestMove
+>>>>>>> 3cc4c369cc6be61c10ac7a555e72aaf0e14408b0
