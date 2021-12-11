@@ -23,6 +23,9 @@
 This is a final Project of "Introduce to AI"
 
 ### Topic
+A chess bot ...
+
+(...)
 
 ### Request
 + player vs comp
