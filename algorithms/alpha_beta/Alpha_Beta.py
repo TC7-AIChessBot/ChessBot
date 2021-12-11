@@ -32,9 +32,7 @@ def alpha_beta_pruning(board, depth, color, alpha, beta):
         return new_alpha
 
 
-def find_move(board, move):
-    if (move !='nomove'):
-        board.push(move)
+def find_move(board):
     chosen_move = None
     moves = board.legal_moves()
 
