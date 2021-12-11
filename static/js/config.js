@@ -79,7 +79,7 @@ pvmBtnBlack.addEventListener("click", async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ from: "null", to: "null" }),
+      body: JSON.stringify({ from: "null", to: "null", promotion: "" }),
     }).then((res) => res.json());
     console.log(initMove);
     game.move({ from: initMove["from"], to: initMove["to"] });
@@ -88,13 +88,13 @@ pvmBtnBlack.addEventListener("click", async () => {
   updateStatus();
 });
 
-var myModal = new bootstrap.Modal(document.getElementById("promotionModal"));
-const test = document.querySelector(".test");
+// var myModal = new bootstrap.Modal(document.getElementById("promotionModal"));
+// const test = document.querySelector(".test");
 
-test.addEventListener("click", async () => {
-  localStorage.setItem("promotionStatus", "false");
-  myModal.show();
-  await waitUserInput();
-  console.log(localStorage.getItem("promotionStatus"));
-  //while (localStorage.getItem("promotionStatus") == "true") {}
-});
+// test.addEventListener("click", async () => {
+//   localStorage.setItem("promotionStatus", "false");
+//   myModal.show();
+//   await waitUserInput();
+//   console.log(localStorage.getItem("promotionStatus"));
+//   //while (localStorage.getItem("promotionStatus") == "true") {}
+// });
