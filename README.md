@@ -23,8 +23,8 @@
 This is a final Project of "Introduce to AI"
 
 ### Topic
-A chess bot ...
-
+The goal of this project is to create a Chess Engine (running on top of the python-chess package) which can play at a human-like level.
+The engine currently works through the use of the minimax algorithm with alpha-beta pruning and limited quiescent searching.
 (...)
 
 ### Request
