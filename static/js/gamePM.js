@@ -11,13 +11,13 @@ function onDragStartPvm(source, piece, position, orientation) {
   if (piece.search(`^${user == "b" ? "w" : "b"}`) !== -1) return false;
 }
 
-function requestMove(source, target) {
+function requestMove(source, target, promotion) {
   fetch("/getmove", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ from: source, to: target }),
+    body: JSON.stringify({ from: source, to: target, promotion }),
   })
     .then((res) => res.json())
     .then((data) => {
@@ -25,7 +25,7 @@ function requestMove(source, target) {
       game.move({
         from: data["from"],
         to: data["to"],
-        promotion: "q",
+        promotion: data["promotion"],
       });
       boardPvm.position(game.fen());
       updateStatus();
@@ -33,20 +33,49 @@ function requestMove(source, target) {
   console.log(source, target);
 }
 
-function onDropPvm(source, target) {
-  var move = game.move({
+const timeout = async (ms) => new Promise((res) => setTimeout(res, ms));
+
+async function waitUserInput() {
+  while (localStorage.getItem("promotionStatus") == "false") await timeout(50); // pause script but avoid browser to freeze ;)
+}
+
+async function onDropPvm(source, target, piece) {
+  console.log(source, target, piece);
+  var check = game.move({
     from: source,
     to: target,
     promotion: "q",
   });
+  if (check === null) return "snapback";
+  else game.undo();
+
+  console.log(source, target, piece);
+  if (
+    piece.search("P") !== -1 &&
+    (target.charAt(1) == "8" || target.charAt(1) == "1")
+  ) {
+    localStorage.setItem("promotionStatus", "false");
+    promotionModal.show();
+  } else {
+    localStorage.setItem("promotionStatus", "true");
+    localStorage.setItem("promotion", "");
+  }
+
+  await waitUserInput();
+
+  var move = game.move({
+    from: source,
+    to: target,
+    promotion: localStorage.getItem("promotion"),
+  });
 
   // illegal move
-  if (move === null) return "snapback";
+  //if (move === null) return "snapback";
 
   boardPvm.position(game.fen());
 
   // make legal move
-  requestMove(source, target);
+  requestMove(source, target, localStorage.getItem("promotion"));
 
   updateStatus();
 }

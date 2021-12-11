@@ -10,7 +10,8 @@ class Game:
     def get_move(self, move_from='null', move_to='', promotion=''):
         if self.com_color != self.board.turn:
             if (move_from != 'null'):
-                human_move = chess.Move.from_uci(move_from + move_to +promotion)
+                print(move_from + move_to + promotion)
+                human_move = chess.Move.from_uci(move_from + move_to + promotion)
                 self.board.push(human_move)
                 if self.board.is_checkmate(): return 'HUMAN_WIN'
                 if self.board.is_draw(): return 'DRAW'
