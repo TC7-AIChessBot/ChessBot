@@ -5,7 +5,7 @@ from algorithms.Game import Game
 
 app = Flask(__name__, template_folder='view', static_url_path='/static')
 
-game = Game(True)
+game = Game()
 
 @app.route('/')
 def index():
