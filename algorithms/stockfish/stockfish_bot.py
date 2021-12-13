@@ -4,9 +4,7 @@ import chess.engine
 
 # %%
 # ! chmod +x ./stockfish_14.1_linux_x64/stockfish_14.1_linux_x64
-
-
-engine = chess.engine.SimpleEngine.popen_uci(r"./stockfish_14.1_linux_x64/stockfish_14.1_linux_x64")
+engine = chess.engine.SimpleEngine.popen_uci(r"./algorithms/stockfish/stockfish_14.1_linux_x64/stockfish_14.1_linux_x64")
 
 
 # %%
