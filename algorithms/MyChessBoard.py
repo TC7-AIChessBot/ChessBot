@@ -1,5 +1,6 @@
 import chess
 import sys
+import numpy as np
 
 sys.path.insert(0, './alpha_beta')
 from Config import point
@@ -72,3 +73,35 @@ class MyChessBoard:
     def is_checkmate(self):
         # If There is checkmate then it will be TRUE else FALSE.It will be a boolean value.
         return self.board.is_checkmate()
+
+    def convert_board_to_int(self):
+        epd_string = self.board.epd()
+        list_int = np.empty((0, ))
+        for i in epd_string:
+            if i == " ":
+                list_int = list_int.reshape((8, 8))
+                return list_int
+            elif i != "/":
+                if i in self.mapped:
+                    list_int = np.append(list_int, self.mapped[i])
+                else:
+                    for counter in range(0, int(i)):
+                        list_int = np.append(list_int, 0)
+        list_int = list_int.reshape((8, 8))
+        return list_int
+
+    def get_state(self) -> np.ndarray:
+        return np.append(self.convert_board_to_int().reshape(64,), self.board.turn * 2 - 1)
+        
+    def encodeMove(self, move_uci:str):
+        if len(move_uci) != 4:
+            raise ValueError()
+        a, b = chess.parse_square(move_uci[:2]), chess.parse_square(move_uci[2:])
+        return a * 64 + b
+
+    def decodeMove(self, move_int:int):
+        a, b = move_int//64, move_int%64
+        # a, b = chess.square_name(a), chess.square_name(b)
+
+        move = self.env.find_move(from_square= a,to_square= b)
+        return move
