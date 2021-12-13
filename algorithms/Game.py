@@ -27,7 +27,7 @@ class Game:
         elif self.bot_level == 3:
             return stockfish_find_move(self.board)
 
-    def new_game(self, com_color, level = 1):
+    def new_game(self, com_color, level = 3):
         self.board.newgame()
         self.com_color = com_color
         self.bot_level = level
