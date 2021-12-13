@@ -2,6 +2,8 @@ from .MyChessBoard import MyChessBoard
 from Alpha_Beta import find_move as alpha_beta_find_move
 import dqn_bot
 from dqn_bot import find_move as dqn_find_move
+import stockfish_bot
+from stockfish_bot import find_move as stockfish_find_move
 
 import chess
 
@@ -22,8 +24,10 @@ class Game:
             return alpha_beta_find_move(self.board)
         elif self.bot_level == 2:
             return dqn_find_move(self.board)
+        elif self.bot_level == 3:
+            return stockfish_find_move(self.board)
 
-    def new_game(self, com_color, level = 1):
+    def new_game(self, com_color, level = 3):
         self.board.newgame()
         self.com_color = com_color
         self.bot_level = level
