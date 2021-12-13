@@ -2,11 +2,19 @@
 import chess
 import chess.engine
 import os
+from sys import platform as platform
 
 # %%
-os.system('chmod +x ./algorithms/stockfish/stockfish_14.1_linux_x64/stockfish_14.1_linux_x64')
-engine = chess.engine.SimpleEngine.popen_uci(r"./algorithms/stockfish/stockfish_14.1_linux_x64/stockfish_14.1_linux_x64")
+if platform == "linux" or platform == "linux2":
+    os.system('chmod +x ./algorithms/stockfish/stockfish_14.1_linux_x64/stockfish_14.1_linux_x64')
+    engine = chess.engine.SimpleEngine.popen_uci(r"./algorithms/stockfish/stockfish_14.1_linux_x64/stockfish_14.1_linux_x64")
 
+
+# elif platform == "win32":
+#     # Windows
+# elif platform == "win64":
+# elif platform == "darwin":
+#     # MAC OS X
 
 # %%
 def find_move(board):
