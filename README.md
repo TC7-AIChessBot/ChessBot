@@ -31,15 +31,22 @@ The engine currently works through the use of the minimax algorithm with alpha-b
 + player vs comp
 
 ## Installation
++ Install basic libraries used:
+```bash
+! pip install tensorflow
+! pip install keras
+! pip install numpy
+```
 
-+ Install libararies used
+
++ Install libraries used
 ```bash
 ! pip install chess
 ! pip install python-chess
 ```
 
 
-+ Install Project from Github source:
++ Clone Project from Github source:
 
 ```bash
 https://github.com/TC7-AIChessBot/ChessBot.git
