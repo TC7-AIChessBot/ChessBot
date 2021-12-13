@@ -9,6 +9,20 @@ from Config import point
 # print(sys.path)
 
 class MyChessBoard:
+    mapped = {
+            'P': 10,     # White Pawn
+            'p': -10,    # Black Pawn
+            'N': 20,     # White Knight
+            'n': -20,    # Black Knight
+            'B': 30,     # White Bishop
+            'b': -30,    # Black Bishop
+            'R': 40,     # White Rook
+            'r': -40,    # Black Rook
+            'Q': 50,     # White Queen
+            'q': -50,    # Black Queen
+            'K': 900,     # White King
+            'k': -900     # Black King
+    }
 
     def __init__(self):
         self.board = chess.Board()
@@ -92,7 +106,7 @@ class MyChessBoard:
 
     def get_state(self) -> np.ndarray:
         return np.append(self.convert_board_to_int().reshape(64,), self.board.turn * 2 - 1)
-        
+
     def encodeMove(self, move_uci:str):
         if len(move_uci) != 4:
             raise ValueError()
@@ -103,5 +117,5 @@ class MyChessBoard:
         a, b = move_int//64, move_int%64
         # a, b = chess.square_name(a), chess.square_name(b)
 
-        move = self.env.find_move(from_square= a,to_square= b)
+        move = self.board.find_move(from_square= a,to_square= b)
         return move

@@ -1,6 +1,7 @@
 from flask import (Flask, render_template, request)
 import sys
 sys.path.insert(0, './algorithms/alpha_beta')
+sys.path.insert(0, './algorithms/dqn')
 from algorithms.Game import Game
 
 app = Flask(__name__, template_folder='view', static_url_path='/static')

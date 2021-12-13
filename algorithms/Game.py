@@ -1,9 +1,13 @@
 from .MyChessBoard import MyChessBoard
-from Alpha_Beta import find_move
+from Alpha_Beta import find_move as alpha_beta_find_move
+import dqn_bot
+from dqn_bot import find_move as dqn_find_move
+
 import chess
 
 class Game:
     com_color = None
+    bot_level = 0
     def __init__(self):
         self.board = MyChessBoard()
 
@@ -14,8 +18,12 @@ class Game:
             self.board.push(human_move)
             if self.board.is_checkmate(): return 'HUMAN_WIN'
             if self.board.is_draw(): return 'DRAW'
-        return find_move(self.board)
+        if self.bot_level == 1:
+            return alpha_beta_find_move(self.board)
+        elif self.bot_level == 2:
+            return dqn_find_move(self.board)
 
-    def new_game(self, com_color):
+    def new_game(self, com_color, level = 2):
         self.board.newgame()
         self.com_color = com_color
+        self.bot_level = level
