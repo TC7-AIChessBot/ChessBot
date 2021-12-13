@@ -23,7 +23,7 @@ class Game:
         elif self.bot_level == 2:
             return dqn_find_move(self.board)
 
-    def new_game(self, com_color, level = 2):
+    def new_game(self, com_color, level = 1):
         self.board.newgame()
         self.com_color = com_color
         self.bot_level = level
