@@ -1,11 +1,8 @@
 # %%
 import numpy as np
 
-# from tensorflow.keras.models import Sequential
-# from tensorflow.keras.layers import Dense, Activation, Flatten,\
-#      Input,BatchNormalization, Dropout
-from keras.models import Sequential
-from keras.layers import Dense, Activation, Flatten,\
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Activation, Flatten,\
      Input,BatchNormalization, Dropout
 
 # %%
