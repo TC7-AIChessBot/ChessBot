@@ -27,7 +27,7 @@ model.add(Dense(NB_ACTIONS))
 model.add(Activation('linear'))
 
 # %%
-model.load_weights('chess_dqn_model.h5')
+model.load_weights('chess_dqn_vs_sf_model.h5')
 
 # %%
 def find_move (board):
