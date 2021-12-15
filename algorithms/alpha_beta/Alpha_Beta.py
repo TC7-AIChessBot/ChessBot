@@ -88,7 +88,7 @@ def find_move(board,move):
 
 def minimax(depth,board,alpha,beta, is_maximising_player) :
     if depth == 0:
-        return board.evaluate_board()
+        return board.evaluate_board()*(board.turn()*2-1)
     moves=board.legal_moves()
     if is_maximising_player:
         bestMove = -float("inf")
@@ -109,3 +109,4 @@ def minimax(depth,board,alpha,beta, is_maximising_player) :
             beta=min(beta,bestMove)
             if beta <=alpha:
                 return bestMove
+        return bestMove

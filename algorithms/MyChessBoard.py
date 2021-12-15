@@ -15,18 +15,6 @@ piece_value = {
     chess.KING: 20000
 }
 
-<<<<<<< HEAD
-=======
-piece_value = {
-    chess.PAWN: 100,
-    chess.ROOK: 500,
-    chess.KNIGHT: 320,
-    chess.BISHOP: 330,
-    chess.QUEEN: 900,
-    chess.KING: 20000
-}
-
->>>>>>> 3cc4c369cc6be61c10ac7a555e72aaf0e14408b0
 pawnEvalWhite = [
     0,  0,  0,  0,  0,  0,  0,  0,
     5, 10, 10, -20, -20, 10, 10,  5,
@@ -109,6 +97,7 @@ kingEvalEndGameWhite = [
 ]
 kingEvalEndGameBlack = list(reversed(kingEvalEndGameWhite))
 
+
 def evaluate_piece(piece, square, end_game):
         piece_type = piece.piece_type
         mapping = []
@@ -151,7 +140,22 @@ class MyChessBoard:
 
     def turn(self):
         return self.board.turn
+    def check_end_game(self) :
+        queens = 0
+        minors = 0
+        for square in chess.SQUARES:
+            piece = self.board.piece_at(square)
+            if piece and piece.piece_type == chess.QUEEN:
+                queens += 1
+            if piece and (
+                piece.piece_type == chess.BISHOP or piece.piece_type == chess.KNIGHT
+            ):
+                minors += 1
 
+        if queens == 0 or (queens == 2 and minors <= 1):
+            return True
+
+        return False
     def fit(self):
         if self.board.is_checkmate():
             if self.board.turn:
@@ -183,7 +187,7 @@ class MyChessBoard:
         self.board = chess.Board()
     def evaluate_board(self):
         total = 0
-        end_game = self.check_end_game
+        end_game = self.check_end_game()
 
         for square in chess.SQUARES:
             piece = self.board.piece_at(square)
