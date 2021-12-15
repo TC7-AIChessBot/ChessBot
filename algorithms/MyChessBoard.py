@@ -1,9 +1,8 @@
 import chess
 import sys
 import numpy as np
-
 sys.path.insert(0, './alpha_beta')
-from Config import point
+from Config import evaluate_piece,piece_value
 # from .alpha_beta.Config import point
 
 # print(sys.path)
@@ -39,33 +38,6 @@ class MyChessBoard:
     def turn(self):
         return self.board.turn
 
-    def fit(self):
-        if self.board.is_checkmate():
-            if self.board.turn:
-                return -9999
-            else: return 9999 
-            
-        fen = self.board.board_fen()
-
-        fen = fen.replace('2','11')
-        fen = fen.replace('3','111')
-        fen = fen.replace('4','1111')
-        fen = fen.replace('5','11111')
-        fen = fen.replace('6','111111')
-        fen = fen.replace('7','1111111')
-        fen = fen.replace('8','11111111')
-        fen = fen.replace('/','')
-
-        fitness = 0
-        # diem cong dua tren vi tri quan co chi huu dung khi khai cuoc
-        if self.board.fullmove_number<12:
-            for i in range(64):
-                fitness += (point[fen[i]]['value'] + point[fen[i]]['pos'][i])
-        else: 
-            for i in range(64):
-                fitness += point[fen[i]]['value']
-
-        return fitness
     def newgame(self):
         self.board = chess.Board()
 
@@ -87,7 +59,34 @@ class MyChessBoard:
     def is_checkmate(self):
         # If There is checkmate then it will be TRUE else FALSE.It will be a boolean value.
         return self.board.is_checkmate()
+    def check_end_game(self) :
+        queens = 0
+        minors = 0
+        for square in chess.SQUARES:
+            piece = self.board.piece_at(square)
+            if piece and piece.piece_type == chess.QUEEN:
+                queens += 1
+            if piece and (
+                piece.piece_type == chess.BISHOP or piece.piece_type == chess.KNIGHT
+            ):
+                minors += 1
 
+        if queens == 0 or (queens == 2 and minors <= 1):
+            return True
+
+        return False
+    def evaluate_board(self):
+        total = 0
+        end_game = self.check_end_game()
+
+        for square in chess.SQUARES:
+            piece = self.board.piece_at(square)
+            if not piece:
+                continue
+            value = piece_value[piece.piece_type] + evaluate_piece(piece,square,end_game)
+            total += value if piece.color == chess.WHITE else -value
+
+        return total
     def convert_board_to_int(self):
         epd_string = self.board.epd()
         list_int = np.empty((0, ))
