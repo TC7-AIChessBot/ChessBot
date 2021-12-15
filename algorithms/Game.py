@@ -1,7 +1,6 @@
 from .MyChessBoard import MyChessBoard
 from Alpha_Beta import find_move as alpha_beta_find_move
 
-import dqn_bot
 from dqn_bot import find_move as dqn_find_move
 from dqn_sf_bot import find_move as dqn_vs_sf_find_move
 
