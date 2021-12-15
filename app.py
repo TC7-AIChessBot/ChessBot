@@ -16,7 +16,7 @@ def index():
 @app.route('/newgame', methods = ["POST"])
 def newgame():
     data = request.get_json()
-    game.new_game(data['color'] == 'white')
+    game.new_game(data['color'] == 'white', data['level'])
     print(data)
     return {'status': 'ok'}
 
