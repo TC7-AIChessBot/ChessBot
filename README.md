@@ -25,10 +25,10 @@ This is a final Project of "Introduce to AI"
 ### Topic
 The goal of this project is to create a Chess Engine (running on top of the python-chess package) which can play at a human-like level.
 The engine currently works through the use of the minimax algorithm with alpha-beta pruning and limited quiescent searching.So in this project we've created a chess game with 4 different levels to help user play and improve their skill.\
-	*Level 1 :Minimax with alpha_beta_prunning\
-	*Level 2 :dqn self-train\
-	*Level 3 :dqn stockfish-train\
-	*Level 4 :stockfish\
+	+Level 1 :Minimax with alpha_beta_prunning\
+	+Level 2 :dqn self-train\
+	+Level 3 :dqn stockfish-train\
+	+Level 4 :stockfish\
 Project is almost done and if anybody want to suggest any improvements please contact us. 
 
 ### Request
