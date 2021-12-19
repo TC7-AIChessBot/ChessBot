@@ -64,7 +64,7 @@ http://localhost:5000/
 ## Method
 
 - Alpha beta pruning
-
+- Deep Q-learning
 
 (Comming soon .... )
 
