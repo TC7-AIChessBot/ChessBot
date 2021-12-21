@@ -1,0 +1,5 @@
+./__pycache__
+./algorithms/__pycache__
+./algorithms/alpha_beta/__pycache__
+./algorithms/dqn/__pycache__
+./algorithms/stockfish/__pycache__
