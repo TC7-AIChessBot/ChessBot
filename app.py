@@ -26,4 +26,7 @@ def getmove():
     print(data['from'], data['to'], data['promotion'])
     move = game.get_move(data['from'], data['to'], data['promotion'])
     game.board.push(move)
-    return {"from": move.uci()[0:2], "to": move.uci()[2:4]}
+    if (len(move.uci()) == 5):
+        return {"from": move.uci()[0:2], "to": move.uci()[2:4], "promotion": move.uci()[4:5]}
+    else:
+        return {"from": move.uci()[0:2], "to": move.uci()[2:4]}
