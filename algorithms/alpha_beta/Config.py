@@ -118,4 +118,8 @@ def evaluate_piece(piece, square, end_game):
             else:
                 mapping = kingEvalWhite if piece.color == chess.WHITE else kingEvalBlack
 
+<<<<<<< HEAD
         return mapping[square]
+=======
+        return mapping[square]
+>>>>>>> origin/main
