@@ -1,8 +1,9 @@
 import chess
 import sys
 import numpy as np
-sys.path.insert(0, './alpha_beta')
-from Config import evaluate_piece,piece_value,convert
+# sys.path.insert(0, './alpha_beta')
+from .alpha_beta.Config import evaluate_piece, piece_value, convert
+# from Config import evaluate_piece,piece_value,convert
 # from .alpha_beta.Config import point
 
 # print(sys.path)

@@ -1,4 +1,4 @@
-from Config import DEPTH
+from .Config import DEPTH
 
 import chess
 def find_move(board):
