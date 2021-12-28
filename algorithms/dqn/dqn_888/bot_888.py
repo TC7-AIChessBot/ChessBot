@@ -18,7 +18,7 @@ def find_move (board: MyChessBoard, model):
                 to_square = (7 - to_square // 8)*8 + to_square % 8
             
             move = board.board.find_move(from_square= from_square,to_square= to_square)
-            print(board.decodeMove(act).uci())
+            print(chess.Move(from_square= act // 64, to_square= act % 64))
             print(move.uci())
             break
         except:
