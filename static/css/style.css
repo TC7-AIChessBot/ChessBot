@@ -90,6 +90,29 @@ main {
   font-size: 1rem;
   font-weight: bold;
 }
+.timer__buttons {
+  margin-bottom: 1em;
+}
+
+.timer-bttn {
+  width: 100%;
+  display: block;
+  color: #020202;
+  min-height: 50px;
+  max-width: 200px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  letter-spacing: 2px;
+  margin: 0 auto 5px auto;
+  border: 4px solid #000000;
+}
+
+.timer-bttn {
+  color: #FFFFFF;
+  background-color: #0071D5;
+}
+
 
 @media only screen and (min-width: 850px) {
   .player {
@@ -106,4 +129,12 @@ main {
   .player__digits {
       font-size: 1rem;
   }
+}
+
+.layer {
+  position: absolute !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 400px !important;
+  height: 400px !important;
 }

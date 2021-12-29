@@ -3,6 +3,10 @@ let currentPlayer = 1;
 const buttonPvP = document.querySelector('.pvp');
 const buttonPvM = document.querySelector('.newgame');
 
+const set10mins = document.querySelector('.set10mins');
+const set25mins = document.querySelector('.set25mins');
+const setUnlimited = document.querySelector('.setUnlimited');
+
 const padZero = (number) => {
     if (number < 10) {
         return '0' + number;
@@ -51,6 +55,10 @@ const startTimer = () => {
                 if (p1sec === 0) {
                     // If minutes and seconds are zero stop timer with the clearInterval method.
                     if (p1sec === 0 && p1time.minutes === 0) {
+                        let status = document.querySelector('#status');
+                        status.innerHTML = "White: Time Out!";
+                        let layer = document.querySelector('#layer_game_over');
+                        layer.classList.add("layer");
                         // Stop timer.
                         clearInterval(timerId);
                         playing = false;
@@ -71,6 +79,10 @@ const startTimer = () => {
                 if (p2sec === 0) {
                     // If minutes and seconds are zero stop timer with the clearInterval method.
                     if (p2sec === 0 && p2time.minutes === 0) {
+                        let status = document.querySelector('#status');
+                        status.innerHTML = "Black: Time Out!";
+                        let layer = document.querySelector('#layer_game_over');
+                        layer.classList.add("layer");
                         // Stop timer.
                         clearInterval(timerId);
                         playing = false;
@@ -85,11 +97,14 @@ const startTimer = () => {
 buttonPvP.addEventListener('click', () => {
     clearInterval(timerId);
     currentPlayer = 1;
-    document.getElementById('min1').innerHTML = '10';
+    document.getElementById('min1').innerHTML = '00';
     document.getElementById('sec1').innerHTML = '00';
-    document.getElementById('min2').innerHTML = '10';
+    document.getElementById('min2').innerHTML = '00';
     document.getElementById('sec2').innerHTML = '00';
-    startTimer();
+    var remove_class_layer = document.querySelector("#layer_game_over");
+    if(remove_class_layer.className = "layer")
+        remove_class_layer.classList.remove("layer");
+    // startTimer();
     // location.reload(true);
   });
 
@@ -97,10 +112,40 @@ buttonPvM.addEventListener('click', () => {
     clearInterval(timerId);
     currentPlayer = 1;
     if(form.elements["color"].value === 'b') currentPlayer = 2;
-    document.getElementById('min1').innerHTML = '10';
+    document.getElementById('min1').innerHTML = '00';
     document.getElementById('sec1').innerHTML = '00';
-    document.getElementById('min2').innerHTML = '10';
+    document.getElementById('min2').innerHTML = '00';
+    document.getElementById('sec2').innerHTML = '00';
+    var remove_class_layer = document.querySelector("#layer_game_over");
+    if(remove_class_layer.className = "layer")
+        remove_class_layer.classList.remove("layer");
+    // startTimer();
+    // location.reload(true);
+  });
+  set10mins.addEventListener('click', () => {
+    clearInterval(timerId);
+    document.getElementById('min1').innerHTML = '01';
+    document.getElementById('sec1').innerHTML = '00';
+    document.getElementById('min2').innerHTML = '01';
     document.getElementById('sec2').innerHTML = '00';
     startTimer();
     // location.reload(true);
-  });  
+});
+set25mins.addEventListener('click', () => {
+    clearInterval(timerId);
+    document.getElementById('min1').innerHTML = '25';
+    document.getElementById('sec1').innerHTML = '00';
+    document.getElementById('min2').innerHTML = '25';
+    document.getElementById('sec2').innerHTML = '00';
+    startTimer();
+    // location.reload(true);
+});
+setUnlimited.addEventListener('click', () => {
+    clearInterval(timerId);
+    document.getElementById('min1').innerHTML = '00';
+    document.getElementById('sec1').innerHTML = '00';
+    document.getElementById('min2').innerHTML = '00';
+    document.getElementById('sec2').innerHTML = '00';
+    // startTimer();
+    // location.reload(true);
+});  
