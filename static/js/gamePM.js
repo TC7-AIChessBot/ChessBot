@@ -22,6 +22,7 @@ function requestMove(source, target, promotion) {
     .then((res) => res.json())
     .then((data) => {
       console.log(data["from"], data["to"]);
+      swapPlayer();
       game.move({
         from: data["from"],
         to: data["to"],
@@ -31,16 +32,18 @@ function requestMove(source, target, promotion) {
       updateStatus();
     });
   console.log(source, target);
+  swapPlayer();
 }
 
 const timeout = async (ms) => new Promise((res) => setTimeout(res, ms));
 
 async function waitUserInput() {
-  while (localStorage.getItem("promotionStatus") == "false") await timeout(50); // pause script but avoid browser to freeze ;)
+  while (localStorage.getItem("promotionStatus") == "false"){ await timeout(50);}; // pause script but avoid browser to freeze ;)
 }
 
 async function onDropPvm(source, target, piece) {
-  console.log(source, target, piece);
+  // console.log(source, target, piece);
+  console.log(1);
   var check = game.move({
     from: source,
     to: target,
@@ -49,7 +52,7 @@ async function onDropPvm(source, target, piece) {
   if (check === null) return "snapback";
   else game.undo();
 
-  console.log(source, target, piece);
+  // console.log(source, target, piece);
   if (
     piece.search("P") !== -1 &&
     (target.charAt(1) == "8" || target.charAt(1) == "1")
@@ -70,7 +73,7 @@ async function onDropPvm(source, target, piece) {
   });
 
   // illegal move
-  //if (move === null) return "snapback";
+  // if (move === null) return "snapback";
 
   boardPvm.position(game.fen());
 
@@ -85,6 +88,7 @@ async function onDropPvm(source, target, piece) {
 function onSnapEndPvm() {
   boardPvm.position(game.fen());
   updateStatus();
+
 }
 
 function updateStatus() {
@@ -98,11 +102,13 @@ function updateStatus() {
   // checkmate?
   if (game.in_checkmate()) {
     status = "Game over, " + moveColor + " is in checkmate.";
+    clearInterval(timerId);
   }
 
   // draw?
   else if (game.in_draw()) {
     status = "Game over, drawn position";
+    clearInterval(timerId);
   }
 
   // game still on
