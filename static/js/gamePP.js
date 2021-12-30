@@ -30,6 +30,7 @@ function onDropPvp(source, target) {
 function onSnapEndPvp() {
   boardPvp.position(game.fen());
   updateStatus();
+  swapPlayer();
 }
 
 function updateStatus() {
@@ -43,11 +44,13 @@ function updateStatus() {
   // checkmate?
   if (game.in_checkmate()) {
     status = "Game over, " + moveColor + " is in checkmate.";
+    clearInterval(timerId);
   }
 
   // draw?
   else if (game.in_draw()) {
     status = "Game over, drawn position";
+    clearInterval(timerId);
   }
 
   // game still on
