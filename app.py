@@ -22,7 +22,7 @@ def newgame():
 
 @app.route('/undo', methods = ["POST"])
 def undo():
-    # game.undo()
+    game.undo_moves()
     return {'status': 'ok'}
 
 @app.route('/getmove', methods = ["POST"])
