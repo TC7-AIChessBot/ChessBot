@@ -65,3 +65,6 @@ class Game:
         if level == 3:
             model.load_weights('chess_dqn_vs_sf_model.h5')
 
+    def undo_moves(self):
+        self.board.pop()
+        self.board.pop()
