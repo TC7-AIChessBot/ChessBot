@@ -66,8 +66,10 @@ undoBtn.addEventListener("click", async (e) => {
   console.log("done");
   if (window.localStorage.getItem("request")) {
     alert("Please wait for request to server completed");
+    return;
   }
-  //await undorequest
+  const err = await fetch("/undo", { method: "POST" });
+  if (!err.status) alert("Can not undo move");
   game.undo();
   if (!game.undo()) {
     boardPvm.position(game.fen());
