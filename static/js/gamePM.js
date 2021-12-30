@@ -12,6 +12,7 @@ function onDragStartPvm(source, piece, position, orientation) {
 }
 
 function requestMove(source, target, promotion) {
+  window.localStorage.setItem("request", "true");
   fetch("/getmove", {
     method: "POST",
     headers: {
@@ -30,6 +31,7 @@ function requestMove(source, target, promotion) {
       });
       boardPvm.position(game.fen());
       updateStatus();
+      window.localStorage.removeItem("request");
     });
   console.log(source, target);
   swapPlayer();
@@ -38,7 +40,9 @@ function requestMove(source, target, promotion) {
 const timeout = async (ms) => new Promise((res) => setTimeout(res, ms));
 
 async function waitUserInput() {
-  while (localStorage.getItem("promotionStatus") == "false"){ await timeout(50);}; // pause script but avoid browser to freeze ;)
+  while (localStorage.getItem("promotionStatus") == "false") {
+    await timeout(50);
+  } // pause script but avoid browser to freeze ;)
 }
 
 async function onDropPvm(source, target, piece) {
@@ -88,7 +92,6 @@ async function onDropPvm(source, target, piece) {
 function onSnapEndPvm() {
   boardPvm.position(game.fen());
   updateStatus();
-
 }
 
 function updateStatus() {

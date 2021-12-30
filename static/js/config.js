@@ -23,6 +23,7 @@ pvpBtn.addEventListener("click", () => {
 });
 
 newGameBtn.addEventListener("click", async () => {
+  document.querySelector(".undo-btn-container").style.display = "block";
   myboardPvm.style.display = "block";
   myboardPvp.style.display = "none";
   boardPvm?.start();
@@ -56,6 +57,35 @@ newGameBtn.addEventListener("click", async () => {
     boardPvm.position(game.fen());
   }
   updateStatus();
+});
+
+const undoBtn = document.querySelector(".undo-btn");
+
+undoBtn.addEventListener("click", async (e) => {
+  e.preventDefault();
+  console.log("done");
+  if (window.localStorage.getItem("request")) {
+    alert("Please wait for request to server completed");
+  }
+  //await undorequest
+  game.undo();
+  if (!game.undo()) {
+    boardPvm.position(game.fen());
+    if (user == "b") {
+      initMove = await fetch("/getmove", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ from: "null", to: "null", promotion: "" }),
+      }).then((res) => res.json());
+      console.log(initMove);
+      game.move({ from: initMove["from"], to: initMove["to"] });
+      boardPvm.position(game.fen());
+    }
+  } else {
+    boardPvm.position(game.fen());
+  }
 });
 
 // pvmBtnBlack.addEventListener("click", async () => {
