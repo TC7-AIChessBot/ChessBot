@@ -5,21 +5,28 @@ var $status = $("#status");
 var $fen = $("#fen");
 var $pgn = $("#pgn");
 var user = null;
+var timer = null;
 
 const pvpBtn = document.querySelector(".pvp");
+const newGamebtnPvp = document.querySelector(".newgamePvP");
 const newGameBtn = document.querySelector(".newgame");
 const myboardPvp = document.querySelector("#myBoardPvp");
 const myboardPvm = document.querySelector("#myBoardPvm");
 const boardCtn = document.querySelector(".boardContainer");
 const form = document.querySelector(".formINPUT");
+const formPvP = document.querySelector(".formINPUT_PvP");
+const clock = document.querySelector(".clock");
 
-pvpBtn.addEventListener("click", () => {
+newGamebtnPvp.addEventListener("click", () => {
   myboardPvm.style.display = "none";
   myboardPvp.style.display = "block";
   boardPvp?.start();
   game.reset();
+  timer = formPvP.elements["timer"].value;
   if (!boardPvp) boardPvp = Chessboard("myBoardPvp", configPvp);
   updateStatus();
+  clock.style.display = "block";
+  setTimerPvP(timer);
 });
 
 newGameBtn.addEventListener("click", async () => {
@@ -28,6 +35,7 @@ newGameBtn.addEventListener("click", async () => {
   boardPvm?.start();
   game.reset();
   user = form.elements["color"].value;
+  timer = form.elements["timer"].value;
   console.log(user);
   if (!boardPvm) boardPvm = Chessboard("myBoardPvm", configPvm);
   boardPvm.orientation(user == "b" ? "black" : "white");
@@ -55,7 +63,10 @@ newGameBtn.addEventListener("click", async () => {
     game.move({ from: initMove["from"], to: initMove["to"] });
     boardPvm.position(game.fen());
   }
+  clock.style.display = "block";
+  setTimerPvM(timer,user);
   updateStatus();
+
 });
 
 // pvmBtnBlack.addEventListener("click", async () => {
