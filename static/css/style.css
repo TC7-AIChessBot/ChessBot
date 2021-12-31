@@ -73,17 +73,15 @@ main {
   border-radius: 2px;
   align-items: center;
   justify-content: center;
-  background-color: #FFFFFF;
-  box-shadow: inset 3px 3px 0 #000, 
-              inset -3px 3px 0 black, 
-              inset -3px -3px 0 black, 
-              inset 3px -3px 0 black;
+  background-color: #ffffff;
+  box-shadow: inset 3px 3px 0 #000, inset -3px 3px 0 black,
+    inset -3px -3px 0 black, inset 3px -3px 0 black;
 }
 
 .player-2 {
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 5px;
-  background-color: #2D2C2C;
+  background-color: #2d2c2c;
 }
 
 .player__digits {
@@ -91,27 +89,26 @@ main {
   font-weight: bold;
 }
 
-@media only screen and (min-width: 850px) {
-  .player {
-      margin: 1em auto 10px auto;
-      max-width: 200px;
-      flex-direction: row;
-  }
-  .player__tile {
-      height: 100px;
-  }
-  .player-2 {
-      margin-top: 0;
-  }
-  .player__digits {
-      font-size: 1rem;
-  }
+.timer__buttons {
+  margin-bottom: 1em;
 }
 
-.layer {
-  position: absolute !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 400px !important;
-  height: 400px !important;
+.timer-bttn {
+  width: 100%;
+  display: block;
+  color: #020202;
+  min-height: 50px;
+  max-width: 200px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  letter-spacing: 2px;
+  margin: 0 auto 5px auto;
+  border: 4px solid #000000;
 }
+
+.timer-bttn {
+  color: #ffffff;
+  background-color: #0071d5;
+}
+
