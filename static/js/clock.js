@@ -120,33 +120,5 @@ function setTimerPvM(timer,user) {
         remove_class_layer.classList.remove("layer");
     if(timer != "00")
         startTimer();
-    // startTimer();
-    // location.reload(true);
-  });
-  set10mins.addEventListener('click', () => {
-    clearInterval(timerId);
-    document.getElementById('min1').innerHTML = '10';
-    document.getElementById('sec1').innerHTML = '00';
-    document.getElementById('min2').innerHTML = '10';
-    document.getElementById('sec2').innerHTML = '00';
-    startTimer();
-    // location.reload(true);
-});
-set25mins.addEventListener('click', () => {
-    clearInterval(timerId);
-    document.getElementById('min1').innerHTML = '25';
-    document.getElementById('sec1').innerHTML = '00';
-    document.getElementById('min2').innerHTML = '25';
-    document.getElementById('sec2').innerHTML = '00';
-    startTimer();
-    // location.reload(true);
-});
-setUnlimited.addEventListener('click', () => {
-    clearInterval(timerId);
-    document.getElementById('min1').innerHTML = '00';
-    document.getElementById('sec1').innerHTML = '00';
-    document.getElementById('min2').innerHTML = '00';
-    document.getElementById('sec2').innerHTML = '00';
-    // startTimer();
     // location.reload(true);
   }
