@@ -88,6 +88,7 @@ main {
   font-size: 1rem;
   font-weight: bold;
 }
+
 .timer__buttons {
   margin-bottom: 1em;
 }
@@ -111,34 +112,3 @@ main {
   background-color: #0071d5;
 }
 
-@media only screen and (min-width: 850px) {
-  .player {
-    margin: 1em auto 10px auto;
-    max-width: 200px;
-    flex-direction: row;
-  }
-  .player__tile {
-    height: 100px;
-  }
-  .player-2 {
-    margin-top: 0;
-  }
-  .player__digits {
-    font-size: 1rem;
-  }
-}
-
-.layer {
-  position: absolute !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 400px !important;
-  height: 400px !important;
-}
-
-.undo-btn-container {
-  display: none;
-  position: absolute;
-  right: 400px;
-  z-index: 1000;
-}

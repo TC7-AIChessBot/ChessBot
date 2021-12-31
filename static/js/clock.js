@@ -1,11 +1,7 @@
 let playing = false;
 let currentPlayer = 1;
-const buttonPvP = document.querySelector('.pvp');
+const buttonPvP = document.querySelector('.newgamePvP');
 const buttonPvM = document.querySelector('.newgame');
-
-const set10mins = document.querySelector('.set10mins');
-const set25mins = document.querySelector('.set25mins');
-const setUnlimited = document.querySelector('.setUnlimited');
 
 const padZero = (number) => {
     if (number < 10) {
@@ -94,31 +90,36 @@ const startTimer = () => {
     }, 1000);
 }
 
-buttonPvP.addEventListener('click', () => {
+function setTimerPvP(timer){
     clearInterval(timerId);
     currentPlayer = 1;
-    document.getElementById('min1').innerHTML = '00';
+    console.log(timer);
+    document.getElementById('min1').innerHTML = timer;
     document.getElementById('sec1').innerHTML = '00';
-    document.getElementById('min2').innerHTML = '00';
+    document.getElementById('min2').innerHTML = timer;
     document.getElementById('sec2').innerHTML = '00';
     var remove_class_layer = document.querySelector("#layer_game_over");
     if(remove_class_layer.className = "layer")
         remove_class_layer.classList.remove("layer");
-    // startTimer();
+    if(timer != "00")
+        startTimer();
     // location.reload(true);
-  });
+  }
 
-buttonPvM.addEventListener('click', () => {
+function setTimerPvM(timer,user) {
     clearInterval(timerId);
     currentPlayer = 1;
-    if(form.elements["color"].value === 'b') currentPlayer = 2;
-    document.getElementById('min1').innerHTML = '00';
+    console.log(timer + " " + user);
+    if(user == 'b') currentPlayer = 2;
+    document.getElementById('min1').innerHTML = timer;
     document.getElementById('sec1').innerHTML = '00';
-    document.getElementById('min2').innerHTML = '00';
+    document.getElementById('min2').innerHTML = timer;
     document.getElementById('sec2').innerHTML = '00';
     var remove_class_layer = document.querySelector("#layer_game_over");
     if(remove_class_layer.className = "layer")
         remove_class_layer.classList.remove("layer");
+    if(timer != "00")
+        startTimer();
     // startTimer();
     // location.reload(true);
   });
@@ -148,4 +149,4 @@ setUnlimited.addEventListener('click', () => {
     document.getElementById('sec2').innerHTML = '00';
     // startTimer();
     // location.reload(true);
-});  
+  }

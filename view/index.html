@@ -93,7 +93,98 @@
 
     <p class="choose">Please choose your mode</p>
     <div class="choice">
-      <button class="pvp">Person versus Person</button>
+      <button
+        class="pvp"
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModalPvP"
+      >
+        Person versus Person
+      </button>
+      <div
+        class="modal fade"
+        id="exampleModalPvP"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabelPvP"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabelPvP">
+                Choose timer
+              </h5>
+            </div>
+            <div class="modal-body">
+              <form class="formINPUT_PvP">
+                <div style="margin-bottom: 5px">
+                  
+
+                  <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-2 pt-0">Timer</legend>
+                    <div class="col-sm-10">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="timer"
+                          id="min10"
+                          value="10"
+                          
+                        />
+                        <label class="form-check-label" for="min10">
+                          10 mins
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="timer"
+                          id="min25"
+                          value="25"
+                        />
+                        <label class="form-check-label" for="min25">
+                          25 mins
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="timer"
+                          id="unlimited"
+                          value="00"
+                          checked
+                        />
+                        <label class="form-check-label" for="unlimited">
+                          Unlimited
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary newgamePvP"
+                data-bs-dismiss="modal"
+              >
+                New game
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <button
         type="button"
         class="pvm"
@@ -204,6 +295,49 @@
                       </div>
                     </div>
                   </fieldset>
+                  <fieldset class="row mb-3">
+                    <legend class="col-form-label col-sm-2 pt-0">Mode</legend>
+                    <div class="col-sm-10">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="timer"
+                          id="min10"
+                          value="10"
+                          
+                        />
+                        <label class="form-check-label" for="min10">
+                          10 mins
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="timer"
+                          id="min25"
+                          value="25"
+                        />
+                        <label class="form-check-label" for="min25">
+                          25 mins
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="timer"
+                          id="unlimited"
+                          value="00"
+                          checked
+                        />
+                        <label class="form-check-label" for="unlimited">
+                          Unlimited
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
                 </div>
               </form>
             </div>
@@ -246,7 +380,7 @@
       </div>
     </div>
 
-    <div class="clock">
+    <div class="clock" style="display: none;">
       <main>
         <div class="player">
           <div class="player__tile player-1">
@@ -258,63 +392,6 @@
           <div class="player__tile player-2">
             <div class="player__digits">
               <span id="min2">00</span>:<span id="sec2">00</span>
-            </div>
-          </div>
-        </div>
-        <div class="timer__buttons">
-          <button
-            class="timer-bttn bttn"
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#enroll"
-          >
-            SET TIMER
-          </button>
-        </div>
-        <div
-          class="modal fade"
-          id="enroll"
-          tabindex="-1"
-          aria-labelledby="enrollLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="enrollLabel">Set Timer</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <div style="width: 55%; margin: 0 auto">
-                  <button
-                    class="btn btn-danger set10mins"
-                    data-bs-dismiss="modal"
-                  >
-                    10 mins
-                  </button>
-                  <button
-                    class="btn btn-danger set25mins"
-                    data-bs-dismiss="modal"
-                  >
-                    25 mins
-                  </button>
-                  <button
-                    class="btn btn-danger setUnlimited"
-                    data-bs-dismiss="modal"
-                  >
-                    Unlimited
-                  </button>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Submit</button> -->
-              </div>
             </div>
           </div>
         </div>
