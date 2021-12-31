@@ -1,12 +1,14 @@
 import chess
 import sys
 import numpy as np
-sys.path.insert(0, './alpha_beta')
-from Config import evaluate_piece,piece_value
+# sys.path.insert(0, './alpha_beta')
+from .alpha_beta.Config import evaluate_piece, piece_value, convert
+# from Config import evaluate_piece,piece_value,convert
 # from .alpha_beta.Config import point
 
 # print(sys.path)
-
+  
+                 
 class MyChessBoard:
     mapped = {
             'P': 10,     # White Pawn
@@ -22,10 +24,10 @@ class MyChessBoard:
             'K': 900,     # White King
             'k': -900     # Black King
     }
-
+    point=[10,20,30,40,50,900]
     def __init__(self):
         self.board = chess.Board()
-
+        self.lastest_move=[0,0]
     def legal_moves(self):
         return self.board.legal_moves
 
@@ -102,7 +104,54 @@ class MyChessBoard:
                         list_int = np.append(list_int, 0)
         list_int = list_int.reshape((8, 8))
         return list_int
-
+    
+    def convert_board_to_int_888(self,env):
+        epd_string = env.epd()
+        list_int = np.empty((0, ))
+        for i in epd_string:
+            if i == " ":
+                list_int = list_int.reshape((8, 8))
+                return list_int
+            elif i != "/":
+                if i in self.mapped:
+                    list_int = np.append(list_int, self.mapped[i])
+                else:
+                    for counter in range(0, int(i)):
+                        list_int = np.append(list_int, 0)
+        list_int = list_int.reshape((8, 8))
+        return list_int
+    def get_state_888(self):
+        board=self.board
+        if len(self.board.move_stack) !=0:
+            self.lastest_move[0]= self.board.move_stack[-1].from_square
+            self.lastest_move[1]= self.board.move_stack[-1].to_square
+        else:
+            self.lastest_move[0]=0
+            self.lastest_move[1]=0
+        if self.board.turn == False:
+            board=self.board.mirror() 
+            for i in range(2):
+                a=7-self.lastest_move[i]//8
+                b=self.lastest_move[i]%8
+                self.lastest_move[i]=8*a+b
+        square=self.convert_board_to_int_888(board)
+        x=np.zeros([8,8,8])
+        for i in range(6):
+            convert(x[i],square,self.point[i])
+        moves=list(board.legal_moves)
+        for move in moves:
+            a= move.from_square
+            b= move.to_square
+            x[6][7-int(a /8)][a%8]=-1
+            x[6][7-int(b /8)][b%8]=1
+        a=self.lastest_move[0]
+        b=self.lastest_move[1]
+        if a!=b:
+            x[7][7-a //8][a%8]=-1
+            x[7][7-b//8][b%8] =1   
+        else: 
+            x[7]=[[0]*8 for i in range(8)]
+        return x 
     def get_state(self) -> np.ndarray:
         return np.append(self.convert_board_to_int().reshape(64,), self.board.turn * 2 - 1)
 

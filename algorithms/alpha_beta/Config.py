@@ -119,3 +119,10 @@ def evaluate_piece(piece, square, end_game):
                 mapping = kingEvalWhite if piece.color == chess.WHITE else kingEvalBlack
 
         return mapping[square]
+def convert(x,square,map):
+    for i in range(8):
+        for j in range(8):
+            if square[i][j]==map:
+                x[i][j]=1
+            elif square[i][j] == -map:
+                x[i][j]=-1 

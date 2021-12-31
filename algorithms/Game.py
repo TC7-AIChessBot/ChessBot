@@ -1,36 +1,19 @@
 from .MyChessBoard import MyChessBoard
-from Alpha_Beta import find_move as alpha_beta_find_move
+from .alpha_beta.Alpha_Beta import find_move as alpha_beta_find_move
 
-from dqn_bot import find_move as dqn_find_move
-from dqn_sf_bot import find_move as dqn_vs_sf_find_move
+from .dqn.dqn_65.bot_65 import find_move as dqn_65_find_move
+from .dqn.dqn_65.model65 import get_model65
 
-import stockfish_bot
-from stockfish_bot import find_move as stockfish_find_move
+from .dqn.dqn_888.bot_888 import find_move as dqn_888_find_move
+from .dqn.dqn_888.model888 import get_model888
+
+from .stockfish.stockfish_bot import find_move as stockfish_find_move
 import chess
-
-
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Activation, Flatten,\
-     Input,BatchNormalization, Dropout
-
-# %%
-STATE_SHAPE = (65, )
-NB_ACTIONS = 4096
 
 # %%
 # model
-model = Sequential()
-model.add(Input((1, ) + STATE_SHAPE))
-model.add(Flatten())
-model.add(Dense(128, activation='relu'))
-model.add(Dropout(0.2))
-model.add(BatchNormalization())
-model.add(Dense(128, activation='relu'))
-model.add(Dropout(0.2))
-model.add(BatchNormalization())
-model.add(Dense(NB_ACTIONS))
-model.add(Activation('linear'))
-
+model65 = get_model65(STATE_SHAPE= (65, ), NB_ACTIONS= 4096)
+model888 = get_model888(STATE_SHAPE= (8, 8, 8), NB_ACTIONS= 4096)
 
 class Game:
     com_color = None
@@ -48,9 +31,9 @@ class Game:
         if self.bot_level == 1:
             return alpha_beta_find_move(self.board)
         elif self.bot_level == 2:
-            return dqn_find_move(self.board, model)
+            return dqn_65_find_move(self.board, model65)
         elif self.bot_level == 3:
-            return dqn_vs_sf_find_move(self.board, model)
+            return dqn_888_find_move(self.board, model888)
         elif self.bot_level == 4:
             return stockfish_find_move(self.board)
 
@@ -60,10 +43,10 @@ class Game:
         self.bot_level = level
         
         if level == 2:
-            model.load_weights('chess_dqn_model.h5')
+            model65.load_weights('chess_65_model.h5')
 
         if level == 3:
-            model.load_weights('chess_dqn_vs_sf_model.h5')
+            model888.load_weights('superbot_888_model.h5')
 
     def undo_moves(self):
         self.board.pop()

@@ -1,18 +1,12 @@
 # %%
 import numpy as np
+from ...MyChessBoard import MyChessBoard
 
 # %%
-STATE_SHAPE = (65, )
-NB_ACTIONS = 4096
-
-# %%
-# model.load_weights('chess_dqn_vs_sf_model.h5')
-
-# %%
-def find_move (board, model):
+def find_move (board: MyChessBoard, model):
     state = board.get_state()
 
-    Q_val = model.predict(state.reshape((1, 1) + STATE_SHAPE)).reshape(-1, )
+    Q_val = model.predict(state.reshape((1, 1) + (65, ))).reshape(-1, )
     idx_sorted = np.argsort(Q_val)
 
     for act in idx_sorted:
