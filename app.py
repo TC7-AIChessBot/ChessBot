@@ -17,6 +17,11 @@ def newgame():
     print(data)
     return {'status': 'ok'}
 
+@app.route('/undo', methods = ["POST"])
+def undo():
+    game.undo_moves()
+    return {'status': 'ok'}
+
 @app.route('/getmove', methods = ["POST"])
 def getmove():
     data = request.get_json()

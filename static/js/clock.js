@@ -124,9 +124,9 @@ buttonPvM.addEventListener('click', () => {
   });
   set10mins.addEventListener('click', () => {
     clearInterval(timerId);
-    document.getElementById('min1').innerHTML = '01';
+    document.getElementById('min1').innerHTML = '10';
     document.getElementById('sec1').innerHTML = '00';
-    document.getElementById('min2').innerHTML = '01';
+    document.getElementById('min2').innerHTML = '10';
     document.getElementById('sec2').innerHTML = '00';
     startTimer();
     // location.reload(true);

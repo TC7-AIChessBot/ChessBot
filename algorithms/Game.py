@@ -48,3 +48,6 @@ class Game:
         if level == 3:
             model888.load_weights('superbot_888_model.h5')
 
+    def undo_moves(self):
+        self.board.pop()
+        self.board.pop()

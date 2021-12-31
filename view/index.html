@@ -228,6 +228,10 @@
       </div>
     </div>
 
+    <div class="undo-btn-container">
+      <button class="undo-btn">UNDO</button>
+    </div>
+
     <div class="boardContainer">
       <div id="myBoardPvp" style="width: 400px"></div>
       <div id="myBoardPvm" style="width: 400px"></div>
@@ -244,37 +248,67 @@
 
     <div class="clock">
       <main>
-   
         <div class="player">
-        
           <div class="player__tile player-1">
             <div class="player__digits">
               <span id="min1">00</span>:<span id="sec1">00</span>
             </div>
           </div>
-          
+
           <div class="player__tile player-2">
             <div class="player__digits">
               <span id="min2">00</span>:<span id="sec2">00</span>
             </div>
           </div>
-          
-        </div>      
-        <div class="timer__buttons">
-          <button class="timer-bttn bttn" type="button" data-bs-toggle="modal" data-bs-target="#enroll">SET TIMER</button>
         </div>
-        <div class="modal fade" id="enroll" tabindex="-1" aria-labelledby="enrollLabel" aria-hidden="true">
+        <div class="timer__buttons">
+          <button
+            class="timer-bttn bttn"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#enroll"
+          >
+            SET TIMER
+          </button>
+        </div>
+        <div
+          class="modal fade"
+          id="enroll"
+          tabindex="-1"
+          aria-labelledby="enrollLabel"
+          aria-hidden="true"
+        >
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="enrollLabel">Set Timer</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
               <div class="modal-body">
-                <div style="width: 55%;margin: 0 auto;">
-                  <button class="btn btn-danger set10mins" data-bs-dismiss="modal">10 mins</button>
-                  <button class="btn btn-danger set25mins" data-bs-dismiss="modal">25 mins</button>
-                  <button class="btn btn-danger setUnlimited" data-bs-dismiss="modal">Unlimited</button>
+                <div style="width: 55%; margin: 0 auto">
+                  <button
+                    class="btn btn-danger set10mins"
+                    data-bs-dismiss="modal"
+                  >
+                    10 mins
+                  </button>
+                  <button
+                    class="btn btn-danger set25mins"
+                    data-bs-dismiss="modal"
+                  >
+                    25 mins
+                  </button>
+                  <button
+                    class="btn btn-danger setUnlimited"
+                    data-bs-dismiss="modal"
+                  >
+                    Unlimited
+                  </button>
                 </div>
               </div>
               <div class="modal-footer">

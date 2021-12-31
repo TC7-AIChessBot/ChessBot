@@ -73,17 +73,15 @@ main {
   border-radius: 2px;
   align-items: center;
   justify-content: center;
-  background-color: #FFFFFF;
-  box-shadow: inset 3px 3px 0 #000, 
-              inset -3px 3px 0 black, 
-              inset -3px -3px 0 black, 
-              inset 3px -3px 0 black;
+  background-color: #ffffff;
+  box-shadow: inset 3px 3px 0 #000, inset -3px 3px 0 black,
+    inset -3px -3px 0 black, inset 3px -3px 0 black;
 }
 
 .player-2 {
-  color: #FFFFFF;
+  color: #ffffff;
   margin-top: 5px;
-  background-color: #2D2C2C;
+  background-color: #2d2c2c;
 }
 
 .player__digits {
@@ -109,25 +107,24 @@ main {
 }
 
 .timer-bttn {
-  color: #FFFFFF;
-  background-color: #0071D5;
+  color: #ffffff;
+  background-color: #0071d5;
 }
-
 
 @media only screen and (min-width: 850px) {
   .player {
-      margin: 1em auto 10px auto;
-      max-width: 200px;
-      flex-direction: row;
+    margin: 1em auto 10px auto;
+    max-width: 200px;
+    flex-direction: row;
   }
   .player__tile {
-      height: 100px;
+    height: 100px;
   }
   .player-2 {
-      margin-top: 0;
+    margin-top: 0;
   }
   .player__digits {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 }
 
@@ -137,4 +134,11 @@ main {
   align-items: center !important;
   width: 400px !important;
   height: 400px !important;
+}
+
+.undo-btn-container {
+  display: none;
+  position: absolute;
+  right: 400px;
+  z-index: 1000;
 }
