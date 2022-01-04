@@ -1,5 +1,5 @@
 # class Config:
-DEPTH = 3
+#DEPTH = 3
 import chess
 import numpy as np
 piece_value = {

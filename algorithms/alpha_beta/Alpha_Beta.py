@@ -1,8 +1,12 @@
-from .Config import DEPTH
+#from .Config import DEPTH
 
 import chess
 def find_move(board):
- 
+    if board.count_pieces()>7: DEPTH=3
+    else: DEPTH=5
+
+    print('Số quân: {}, độ sâu: {}'.format(board.count_pieces, DEPTH))
+        
     maximize = board.turn == chess.WHITE
     best_move = -float("inf")
     if not maximize: 
