@@ -167,3 +167,15 @@ class MyChessBoard:
 
         move = self.board.find_move(from_square= a,to_square= b)
         return move
+
+
+    def count_pieces(self):
+        pieces = 0
+        fen = self.board.board_fen()
+        for piece in fen:
+            if piece not in ['1','2','3','4','5','6','7','8','/','p','P']:
+                pieces+=1
+            if piece in ['q','Q']:
+                pieces+=1
+
+        return pieces
