@@ -64,10 +64,9 @@ newGameBtn.addEventListener("click", async () => {
     game.move({ from: initMove["from"], to: initMove["to"] });
     boardPvm.position(game.fen());
   }
-  clock.style.display = "block";
-  setTimerPvM(timer,user);
+  clock.style.display = "inline-block";
+  setTimerPvM(timer, user);
   updateStatus();
-
 });
 
 const undoBtn = document.querySelector(".undo-btn");

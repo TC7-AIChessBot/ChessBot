@@ -5,6 +5,7 @@
 
 body {
   font-family: "Neutra Text";
+  background-color: #d6d3c4;
 }
 
 .header {
@@ -28,8 +29,12 @@ body {
 .choice button {
   margin: 20px;
   height: 50px;
-  border: 1px solid black;
+  border: 2px solid rgb(37, 32, 32);
   font-weight: bold;
+}
+
+.header-container {
+  border-bottom: 2px dashed white;
 }
 
 .choice button:hover {
@@ -41,6 +46,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 7px;
 }
 
 .current-status {
@@ -91,18 +97,18 @@ main {
 
 @media only screen and (min-width: 850px) {
   .player {
-      margin: 1em auto 10px auto;
-      max-width: 200px;
-      flex-direction: row;
+    margin: 1em auto 10px auto;
+    max-width: 200px;
+    flex-direction: row;
   }
   .player__tile {
-      height: 100px;
+    height: 100px;
   }
   .player-2 {
-      margin-top: 0;
+    margin-top: 0;
   }
   .player__digits {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 }
 
@@ -114,4 +120,15 @@ main {
   height: 400px !important;
 }
 
+.clock {
+  width: 200px;
+  position: absolute;
+  top: 10px;
+}
 
+.undo-btn {
+  margin: 10px;
+  background-color: #dfded4;
+  border: 1px solid #000;
+  font-weight: bold;
+}
