@@ -17,8 +17,7 @@ def find_move(board):
     for move in moves:
         if (move !='nomove'):    
             board.push(move)   
-        #value = alpha_beta_pruning(board, DEPTH-1, board.turn(), -float("inf"), float("inf"))
-        value=minimax(DEPTH-1,board,-float("inf"),float("inf"),not maximize)
+        value=alpha_beta_pruning(DEPTH-1,board,-float("inf"),float("inf"),not maximize)
         board.pop()
         if maximize and value >= best_move:
             best_move = value
@@ -30,7 +29,7 @@ def find_move(board):
     return best_move_found
 
 
-def minimax(depth,board,alpha,beta, is_maximising_player) :
+def alpha_beta_pruning(depth,board,alpha,beta, is_maximising_player) :
     if depth == 0:
         return board.evaluate_board()*(board.turn()*2-1)
     moves=board.legal_moves()
