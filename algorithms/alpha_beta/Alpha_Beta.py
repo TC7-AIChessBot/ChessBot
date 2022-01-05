@@ -37,7 +37,7 @@ def alpha_beta_pruning(depth,board,alpha,beta, is_maximising_player) :
         bestMove = -float("inf")
         for move in moves:
             board.push(move)
-            bestMove=max(bestMove,minimax(depth-1,board,alpha,beta, not is_maximising_player))
+            bestMove=max(bestMove,alpha_beta_pruning(depth-1,board,alpha,beta, not is_maximising_player))
             board.pop()
             alpha=max(alpha,bestMove)
             if beta <=alpha:
@@ -47,7 +47,7 @@ def alpha_beta_pruning(depth,board,alpha,beta, is_maximising_player) :
         bestMove = float("inf")
         for move in moves:
             board.push(move)
-            bestMove=min(bestMove,minimax(depth-1,board,alpha,beta, not is_maximising_player))
+            bestMove=min(bestMove,alpha_beta_pruning(depth-1,board,alpha,beta, not is_maximising_player))
             board.pop()
             beta=min(beta,bestMove)
             if beta <=alpha:
