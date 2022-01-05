@@ -12,6 +12,11 @@
       crossorigin="anonymous"
     />
 
+    <script
+      src="https://kit.fontawesome.com/a10c199002.js"
+      crossorigin="anonymous"
+    ></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link
@@ -89,281 +94,284 @@
         </div>
       </div>
     </div>
-    <div class="header">WELCOME TO AI CHESSBOARD</div>
+    <div class="header-container" style="background-color: #cdcab9">
+      <div class="header">
+        <i class="fas fa-chess-king"></i> WELCOME TO AI CHESSBOARD
+        <i class="fas fa-chess-king"></i>
+      </div>
 
-    <p class="choose">Please choose your mode</p>
-    <div class="choice">
-      <button
-        class="pvp"
-        type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModalPvP"
-      >
-        Person versus Person
-      </button>
-      <div
-        class="modal fade"
-        id="exampleModalPvP"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabelPvP"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabelPvP">
-                Choose timer
-              </h5>
+      <p class="choose">Please choose your mode</p>
+      <div class="choice">
+        <button
+          class="pvp"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModalPvP"
+          style="background-color: #432f21; color: white"
+        >
+          Person versus Person
+        </button>
+        <div
+          class="modal fade"
+          id="exampleModalPvP"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabelPvP"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelPvP">
+                  Choose timer
+                </h5>
+              </div>
+              <div class="modal-body">
+                <form class="formINPUT_PvP">
+                  <div style="margin-bottom: 5px">
+                    <fieldset class="row mb-3">
+                      <legend class="col-form-label col-sm-2 pt-0">
+                        Timer
+                      </legend>
+                      <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="timer"
+                            id="min10"
+                            value="10"
+                          />
+                          <label class="form-check-label" for="min10">
+                            10 mins
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="timer"
+                            id="min25"
+                            value="25"
+                          />
+                          <label class="form-check-label" for="min25">
+                            25 mins
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="timer"
+                            id="unlimited"
+                            value="00"
+                            checked
+                          />
+                          <label class="form-check-label" for="unlimited">
+                            Unlimited
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary newgamePvP"
+                  data-bs-dismiss="modal"
+                >
+                  New game
+                </button>
+              </div>
             </div>
-            <div class="modal-body">
-              <form class="formINPUT_PvP">
-                <div style="margin-bottom: 5px">
-                  
+          </div>
+        </div>
+        <button
+          type="button"
+          class="pvm"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          style="background-color: #432f21; color: white"
+        >
+          Person versus Machine
+        </button>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Choose your color
+                </h5>
+              </div>
+              <div class="modal-body">
+                <form class="formINPUT">
+                  <div style="margin-bottom: 5px">
+                    <fieldset class="row mb-3">
+                      <legend class="col-form-label col-sm-2 pt-0">
+                        Color
+                      </legend>
+                      <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="color"
+                            id="colorWhite"
+                            value="w"
+                            checked
+                          />
+                          <label class="form-check-label" for="colorWhite">
+                            White
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="color"
+                            id="colorBlack"
+                            value="b"
+                          />
+                          <label class="form-check-label" for="colorBlack">
+                            Black
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
 
-                  <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-2 pt-0">Timer</legend>
-                    <div class="col-sm-10">
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="timer"
-                          id="min10"
-                          value="10"
-                          
-                        />
-                        <label class="form-check-label" for="min10">
-                          10 mins
-                        </label>
+                    <fieldset class="row mb-3">
+                      <legend class="col-form-label col-sm-2 pt-0">Mode</legend>
+                      <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="level"
+                            id="level1"
+                            value="1"
+                            checked
+                          />
+                          <label class="form-check-label" for="level1">
+                            Mode 1
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="level"
+                            id="level2"
+                            value="2"
+                          />
+                          <label class="form-check-label" for="level2">
+                            Mode 2
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="level"
+                            id="level3"
+                            value="3"
+                          />
+                          <label class="form-check-label" for="level3">
+                            Mode 3
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="level"
+                            id="level4"
+                            value="4"
+                          />
+                          <label class="form-check-label" for="level4">
+                            Mode 4
+                          </label>
+                        </div>
                       </div>
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="timer"
-                          id="min25"
-                          value="25"
-                        />
-                        <label class="form-check-label" for="min25">
-                          25 mins
-                        </label>
+                    </fieldset>
+                    <fieldset class="row mb-3">
+                      <legend class="col-form-label col-sm-2 pt-0">Mode</legend>
+                      <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="timer"
+                            id="min10"
+                            value="10"
+                          />
+                          <label class="form-check-label" for="min10">
+                            10 mins
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="timer"
+                            id="min25"
+                            value="25"
+                          />
+                          <label class="form-check-label" for="min25">
+                            25 mins
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="timer"
+                            id="unlimited"
+                            value="00"
+                            checked
+                          />
+                          <label class="form-check-label" for="unlimited">
+                            Unlimited
+                          </label>
+                        </div>
                       </div>
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="timer"
-                          id="unlimited"
-                          value="00"
-                          checked
-                        />
-                        <label class="form-check-label" for="unlimited">
-                          Unlimited
-                        </label>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary newgamePvP"
-                data-bs-dismiss="modal"
-              >
-                New game
-              </button>
+                    </fieldset>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary newgame"
+                  data-bs-dismiss="modal"
+                >
+                  New game
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <button
-        type="button"
-        class="pvm"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Person versus Machine
-      </button>
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Choose your color
-              </h5>
-            </div>
-            <div class="modal-body">
-              <form class="formINPUT">
-                <div style="margin-bottom: 5px">
-                  <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-2 pt-0">Color</legend>
-                    <div class="col-sm-10">
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="color"
-                          id="colorWhite"
-                          value="w"
-                          checked
-                        />
-                        <label class="form-check-label" for="colorWhite">
-                          White
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="color"
-                          id="colorBlack"
-                          value="b"
-                        />
-                        <label class="form-check-label" for="colorBlack">
-                          Black
-                        </label>
-                      </div>
-                    </div>
-                  </fieldset>
-
-                  <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-2 pt-0">Mode</legend>
-                    <div class="col-sm-10">
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="level"
-                          id="level1"
-                          value="1"
-                          checked
-                        />
-                        <label class="form-check-label" for="level1">
-                          Mode 1
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="level"
-                          id="level2"
-                          value="2"
-                        />
-                        <label class="form-check-label" for="level2">
-                          Mode 2
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="level"
-                          id="level3"
-                          value="3"
-                        />
-                        <label class="form-check-label" for="level3">
-                          Mode 3
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="level"
-                          id="level4"
-                          value="4"
-                        />
-                        <label class="form-check-label" for="level4">
-                          Mode 4
-                        </label>
-                      </div>
-                    </div>
-                  </fieldset>
-                  <fieldset class="row mb-3">
-                    <legend class="col-form-label col-sm-2 pt-0">Mode</legend>
-                    <div class="col-sm-10">
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="timer"
-                          id="min10"
-                          value="10"
-                          
-                        />
-                        <label class="form-check-label" for="min10">
-                          10 mins
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="timer"
-                          id="min25"
-                          value="25"
-                        />
-                        <label class="form-check-label" for="min25">
-                          25 mins
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="timer"
-                          id="unlimited"
-                          value="00"
-                          checked
-                        />
-                        <label class="form-check-label" for="unlimited">
-                          Unlimited
-                        </label>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary newgame"
-                data-bs-dismiss="modal"
-              >
-                New game
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="undo-btn-container">
-      <button class="undo-btn">UNDO</button>
     </div>
 
     <div class="boardContainer">
@@ -380,7 +388,7 @@
       </div>
     </div>
 
-    <div class="clock" style="display: none;">
+    <div class="clock" style="display: none">
       <main>
         <div class="player">
           <div class="player__tile player-1">
@@ -396,6 +404,10 @@
           </div>
         </div>
       </main>
+
+      <div class="undo-btn-container">
+        <button class="undo-btn">UNDO</button>
+      </div>
     </div>
 
     <!-- <div>
