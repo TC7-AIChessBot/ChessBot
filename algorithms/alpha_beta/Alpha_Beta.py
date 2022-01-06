@@ -2,7 +2,7 @@
 
 import chess
 def find_move(board):
-    if board.count_pieces()>7: DEPTH=2
+    if board.count_pieces()>7: DEPTH=3
     else: DEPTH=5
 
     print('Số quân: {}, độ sâu: {}'.format(board.count_pieces, DEPTH))
