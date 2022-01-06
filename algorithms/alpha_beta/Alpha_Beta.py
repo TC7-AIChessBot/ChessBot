@@ -31,7 +31,7 @@ def find_move(board):
 
 def alpha_beta_pruning(depth,board,alpha,beta, is_maximising_player) :
     if depth == 0:
-        return board.evaluate_board()*(is_maximising_player*2-1)
+        return board.evaluate_board()*(board.turn()*2-1)
     moves=board.legal_moves()
     if is_maximising_player:
         bestMove = -float("inf")
