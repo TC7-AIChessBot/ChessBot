@@ -4,8 +4,8 @@ from .alpha_beta.Alpha_Beta import find_move as alpha_beta_find_move
 from .dqn.dqn_65.bot_65 import find_move as dqn_65_find_move
 from .dqn.dqn_65.model65 import get_model65
 
-from .dqn.dqn_888.bot_888 import find_move as dqn_888_find_move
 from .dqn.dqn_888.model888 import get_model888
+from .dqn.dqn_888.bot_888 import find_move as dqn_888_find_move
 
 from .stockfish.stockfish_bot import find_move as stockfish_find_move
 import chess

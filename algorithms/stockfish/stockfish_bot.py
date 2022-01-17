@@ -25,7 +25,7 @@ else:
 
 
 # %%
-def find_move(board):
+def find_move(board, *args):
     result = engine.play(board.board, chess.engine.Limit(time=1))
     return result.move
 
