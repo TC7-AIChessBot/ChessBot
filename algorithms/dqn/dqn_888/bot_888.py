@@ -7,7 +7,7 @@ from ...stockfish.stockfish_bot import find_move as fm2
 
 # %%
 def find_move (board: MyChessBoard, model):
-    if np.random.uniform() < 0:
+    if np.random.uniform() < 0.05:
         state = board.get_state_888()
 
         Q_val = model.predict(state.reshape((1, 1) + (8, 8, 8))).reshape(-1, )
