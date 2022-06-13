@@ -1,5 +1,3 @@
-#from .Config import DEPTH
-
 import chess
 def find_move(board):
     if board.count_pieces()>7: DEPTH= 3
